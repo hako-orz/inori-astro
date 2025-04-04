@@ -1,0 +1,192 @@
+/* global css */
+:root {
+    --background: #fff;
+    --foreground: #000;
+
+    --shallow-deeper: #EDEEF2;
+    --shallow: #F4F5F8;
+
+	--meta-text: #B2B6BE;
+
+    --accent: #2337ff;
+	--accent-dark: #000d8a;
+	--black: 15, 18, 25;
+	--gray: 96, 115, 159;
+	--gray-light: 229, 233, 240;
+	--gray-dark: 34, 41, 57;
+	--gray-gradient: rgba(var(--gray-light), 50%), #fff;
+	--box-shadow:
+		0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
+		0 16px 32px rgba(var(--gray), 33%);
+}
+
+
+
+.dark {
+    --background: #17171A;
+    --foreground: #fff;
+
+    --shallow: #202229;
+    --shallow-deeper: #2E3138;
+	--meta-text: #5D5C62;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: var(--background);
+    color: var(--foreground);
+    line-height: 1.7;
+
+	transition: all;
+    transition-duration: 300ms;
+    
+}
+
+/* icon css */
+.icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    mask: var(--icon-url);
+    mask-size: 100% 100%;
+    color: inherit;
+    background-color: currentColor;
+}
+
+.sun {
+    --icon-url: url('/src/assets/icon/sun.svg');
+}
+
+.moon {
+    --icon-url: url('/src/assets/icon/moon.svg');
+}
+
+.github {
+    --icon-url: url('/src/assets/icon/github.svg');
+}
+
+.clock {
+	--icon-url: url('/src/assets/icon/clock.svg');
+}
+
+/* md file */
+.prose {
+    font-size: 18px;
+}
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4,
+.prose h5,
+.prose h6 {
+	margin: 0 0 2rem 0;
+	color: var(--foreground);
+	line-height: 1.2;
+}
+h1 {
+	font-size: 3.052em;
+}
+h2 {
+	font-size: 2.441em;
+}
+h3 {
+	font-size: 1.953em;
+}
+h4 {
+	font-size: 1.563em;
+}
+h5 {
+	font-size: 1.25em;
+}
+ol,ul {
+    padding-inline-start: 40px;
+}
+strong,
+b {
+	font-weight: 700;
+}
+a {
+	color: var(--accent);
+}
+a:hover {
+	color: var(--accent);
+}
+.prose p {
+	margin-bottom: 1.5em;
+}
+textarea {
+	width: 100%;
+	font-size: 16px;
+}
+input {
+	font-size: 16px;
+}
+table {
+	width: 100%;
+    margin: 1em 0;
+}
+img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 8px;
+}
+code {
+	padding: 2px 5px;
+	background-color: var(--shallow-deeper);
+	border-radius: 2px;
+}
+pre {
+    margin: 1.5em 0;
+	padding: 1.5em;
+	border-radius: 8px;
+}
+.prose table tr,.prose table td {
+    text-align: left;
+    padding: 2px;
+}
+pre > code {
+	all: unset;
+}
+blockquote {
+	border-left: 4px solid var(--accent);
+	padding: 0 0 0 20px;
+	margin: 0px;
+	font-size: 1.333em;
+}
+hr {
+	border: none;
+	border-top: 1px solid rgb(var(--gray-light));
+}
+
+
+/* reset css */
+html,
+body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+a {
+    color: inherit;
+    text-decoration: none;
+}
+button {
+    color: inherit;
+}
+p {
+	font-size: 18px;
+	line-height: 1.2;
+}
+
+/* fonts */
+@font-face {
+	font-family: 'noto-serif';
+	src: url('/fonts/noto-serif.ttf') format('woff');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}

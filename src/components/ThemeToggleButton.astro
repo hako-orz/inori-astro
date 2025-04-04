@@ -1,0 +1,82 @@
+<button data-theme-toggle-button class="toggle-button" aria-label="toggle">
+    <div data-theme-toggle-icon class="icon" style="width: 19px; height: 19px;">
+    </div>
+</button>
+
+<script async is:inline>
+    const handler = () => {
+        const darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+        const button = document.querySelector("[data-theme-toggle-button]");
+        const icon = document.querySelector("[data-theme-toggle-icon]");
+
+        function setDark() {
+            document.body.classList.add("dark");
+            icon?.classList.remove("sun");
+            icon?.classList.add("moon");
+        }
+
+        function setLight() {
+            document.body.classList.remove("dark");
+            icon?.classList.remove("moon");
+            icon?.classList.add("sun");
+        }
+
+        function init() {
+            if (!("theme" in localStorage) && darkQuery) {
+                setDark();
+            } else if (localStorage.getItem("theme") === "dark") {
+                setDark();
+            } else {
+                setLight();
+            }
+        }
+
+        return {
+            icon,
+            button,
+            init,
+            setDark,
+            setLight,
+        };
+    };
+    const { init } = handler();
+    init();
+</script>
+<script async is:inline>
+    document.addEventListener("astro:page-load", () => {
+        const { button, setDark, setLight } = handler();
+        button?.addEventListener("click", () => {
+            if (document.body.classList.contains("dark")) {
+                setLight();
+                localStorage.setItem("theme", "light");
+            } else {
+                setDark();
+                localStorage.setItem("theme", "dark");
+            }
+        });
+    });
+</script>
+
+<script async is:inline>
+    document.addEventListener("astro:after-swap", () => {
+        const { init } = handler();
+        init();
+    });
+</script>
+
+<style>
+    .toggle-button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 32px;
+        height: 32px;
+        background: var(--shallow);
+
+        border: 1px solid var(--shallow-deeper);
+        border-radius: 10px;
+
+        cursor: pointer;
+    }
+</style>

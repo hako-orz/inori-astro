@@ -1,0 +1,52 @@
+---
+import Button from "./Button.astro";
+---
+
+<div class="hero-container">
+    <div>
+        <p class="intro-wel">Hi, I'm Honam-Z</p>
+        <div class="intro">
+            <p>A Web Develoer</p>
+            <p>Goal to be more excellent!</p>
+            <p>(◍˃̶ᗜ˂̶◍)✩</p>
+        </div>
+        <div class="button-group">
+            <Button />
+        </div>
+    </div>
+    <div class="hero-img"></div>
+</div>
+
+<style>
+    .hero-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .intro-wel {
+        font-size: 30px;
+        font-weight: 700;
+    }
+
+    .intro {
+        margin-top: 15px;
+    }
+
+    .intro p {
+        line-height: 1.5;
+        font-size: 24px;
+        line-height: 1.5;
+    }
+
+    .button-group {
+        margin-top: 20px;
+    }
+
+    .hero-img {
+        width: 390px;
+        height: 261px;
+        background-image: url("/dantalion.png");
+        background-size: cover;
+        border-radius: 20px;
+    }
+</style>

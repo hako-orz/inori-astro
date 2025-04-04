@@ -1,0 +1,44 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Container from "../components/Container.astro";
+import MainHeader from "../components/MainHeader.astro";
+import { SITE_NAME, SITE_DESCRIPTION } from "../lib/const";
+
+const { title } = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={title ?`${title} | ${SITE_NAME}` : SITE_NAME} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+        <Container>
+            <div class="container">
+				<MainHeader />
+		    	<main><slot /></main>
+				<footer>&copy;ave mujica</footer>
+			</div>
+        </Container>
+	</body>
+</html>
+
+<style>
+	.container {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+	}
+
+	main {
+		flex: 1;
+	}
+
+	footer {
+		padding: 20px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: var(--meta-text);
+	}
+</style>

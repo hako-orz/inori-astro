@@ -1,7 +1,40 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import PageLayout from "../layouts/PageLayout.astro";
+import Hero from "../components/home/Hero.astro";
+import LatestPosts from "../components/home/LatestPosts.astro";
 ---
 
-<Layout>
-	祈り
-</Layout>
+<PageLayout>
+    <div class="posts-container">
+        <Hero />
+        <div class="latest-posts">
+            <LatestPosts />
+        </div>
+</PageLayout>
+
+<style>
+    .hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 1px;
+    }
+    .latest-posts {
+        margin-top: 50px;
+    }
+    .site-name {
+        font-family: 'noto-serif';
+        font-size: 180px;
+        
+    }
+    .posts-container {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .post-title {
+        font-size: 30px;
+    }
+</style>

@@ -1,0 +1,51 @@
+---
+import ThemeToggleButton from './ThemeToggleButton.astro';
+import { SITE_NAME } from '../lib/const';
+---
+<header class="main-header">
+    <a class="site-name" href="/">{SITE_NAME}</a>
+    <div class="buttons">
+        <ThemeToggleButton />
+        <a aria-label="github" class="link">
+            <div class="icon github" style="width: 22px; height: 22px;"></div>
+        </a>
+    </div>
+</header>
+
+<style>
+    .main-header {
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-weight: bolder;
+        
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 62px;
+
+        border-bottom: 1px solid var(--shallow-deeper);
+    }
+
+    .site-name {
+        display: block;
+        font-size: 22px;
+        font-weight: bolder;
+    }
+
+    .buttons {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .link {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: fit-content;
+        cursor: pointer;
+    }
+
+    .link:hover {
+        color: #D4D6D9
+    }
+</style>

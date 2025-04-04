@@ -1,0 +1,66 @@
+---
+import { getCollection } from "astro:content";
+import { formatDate } from "../../lib/post";
+
+const posts = (await getCollection("blog"))
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .slice(0, 3);
+---
+
+<div>
+    <h2 class="title">Latest</h2>
+    <div class="posts-list">
+        {
+            posts.map((post) => (
+                <a href={`/blog/${post.id}`} class="post-card-container">
+                    <div class="post-title">{post.data.title}</div>
+                    <div class="post-description">{post.data.description}</div>
+                    <div class="post-meta">
+                        <div class="post-pubdate">
+                            <div class="icon clock" />
+                            <div>{formatDate(post.data.pubDate).date}</div>
+                        </div>
+                    </div>
+                </a>
+            ))
+        }
+    </div>
+</div>
+
+<style>
+    .title {
+        border-bottom: 1px solid var(--shallow-deeper);
+    }
+    .post-card-container {
+        border: 1px solid var(--shallow-deeper);
+        border-radius: 10px;
+        padding: 10px;
+        cursor: pointer;
+    }
+    .post-card-container:hover {
+        color: inherit;
+        background-color: #F6F9FF;
+        box-shadow: var(--shallow-deeper) 2px 4px 8px;
+    }
+    .posts-list {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+    .post-title {
+        font-size: 20px;
+        font-weight: 700;
+    }
+    .post-description {
+        font-size: 16px;
+    }
+    .post-pubdate {
+        display: flex;
+        width: fit-content;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        color: var(--meta-text);
+    }
+</style>
